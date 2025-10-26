@@ -20,6 +20,7 @@ def check_ram():
                 'wmic memorychip get speed, partnumber, capacity', shell=True
             ).decode()
             print("RAM Details:\n", output)
+            print("If your RAM supports XMP, enable it in BIOS for optimal speed.")
         except Exception as e:
             print("Error retrieving RAM info:", e)
     else:
