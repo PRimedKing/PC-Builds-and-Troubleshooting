@@ -18,9 +18,10 @@ def list_startup_programs():
     for path in reg_paths:
         try:
             key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
-            for i in range(0, winreg.QueryInfoKey(key)[1]):
+            for i in range(winreg.QueryInfoKey(key)[1]):
                 name, value, _ = winreg.EnumValue(key, i)
                 print(f"{name}: {value}")
+            print("\nTip: Disable unnecessary programs via Task Manager > Startup tab.")
         except Exception:
             continue
 
