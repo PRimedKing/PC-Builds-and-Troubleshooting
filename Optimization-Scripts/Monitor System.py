@@ -9,9 +9,20 @@ How it works:
 import psutil
 
 def system_monitor():
-    print("CPU Usage: ", psutil.cpu_percent(), "%")
-    print("Memory Usage: ", psutil.virtual_memory().percent, "%")
-    print("Disk Usage: ", psutil.disk_usage('/').percent, "%")
+    cpu = psutil.cpu_percent()
+    ram = psutil.virtual_memory().percent
+    disk = psutil.disk_usage('/').percent
+    
+    print("CPU Usage: ", cpu, "%")
+    print("Memory Usage: ", ram, "%")
+    print("Disk Usage: ", disk, "%")
+    
+    if cpu > 85:
+        print("Warning: High CPU usage!")
+    if ram > 85:
+        print("Warning: High RAM usage!")
+    if disk > 90:
+        print("Warning: Low disk space!")
 
 if __name__ == "__main__":
     system_monitor()
