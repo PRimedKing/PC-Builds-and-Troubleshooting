@@ -21,6 +21,7 @@ def backup_files():
     if os.path.exists(source_folder):
         shutil.copytree(source_folder, backup_path)
         print(f"Files backed up to {backup_path}")
+        print(f"Backup folder size: {round(sum(os.path.getsize(os.path.join(dirpath, f)) for dirpath, _, files in os.walk(backup_path) for f in files)/1024/1024, 2)} MB")
     else:
         print(f"Source folder '{source_folder}' not found.")
 
